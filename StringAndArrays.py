@@ -68,7 +68,40 @@ def replace_with_2(prev, new, string):
     return new_str
 
 
+#1.6
+def rotate_image(image):
+    #image is given as list of lists
+    #this is rotation in place by 90 degrees clockwise
+    return zip(*image[::-1])
 
+def rotate_image_2(image):
+    #if rotation by 90 degrees anti clockwise
+    return zip(*image)[::-1]
+
+#the long way using helper functions
+def swap(a, y, x):
+    pos1 = (y, x)
+    pos2 = (x, len(a)-1-y)
+    temp = a[pos1[0]][pos1[1]]
+    a[pos1[0]][pos1[1]] = a[pos2[0]][pos2[1]]
+    a[pos2[0]][pos2[1]] = temp
+
+def rotate_layer(a, layer):
+    max_index = len(a)-1
+    for i in range(layer, max_index-layer+1):
+        swap(a, max_index-layer, i)
+    
+    for j in range(layer, max_index-layer):
+        swap(a, j, max_index-layer)
+    
+    for i in range(layer+1, max_index-layer):
+        swap(a, layer, i)
+
+def rotateImage(a):
+    #rotate image in place by 90 degrees clockwise
+    for i in range(0, int(len(a)/2)):
+        rotate_layer(a, i)
+    return a
 
 
         
