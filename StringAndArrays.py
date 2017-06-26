@@ -103,5 +103,25 @@ def rotateImage(a):
         rotate_layer(a, i)
     return a
 
+def replace(row, prev, sentinel):
+    for index, elem in enumerate(row):
+        if elem != prev:
+            row[index] = sentinel
+    return row
 
+def replace_with(prev, new, matrix, sentinel):
+    #done in place for an MxN matrix. This is O(m*n)
+    matrix = [replace(row, prev, sentinel) if prev in row else row for row in matrix]
+    matrix = [list(row) for row in zip(*matrix)]
+    matrix = [replace(row, prev, sentinel) if prev in row else row for row in matrix]
+    matrix = [list(row) for row in zip(*matrix)]
+    for row in matrix:
+        for index, elem in enumerate(row):
+            if elem == sentinel:
+                row[index] = new
+    return matrix
+
+#an example of how this funtion could be used
+matrix = [[0, 0, 1], [1, 1, 1], [1, 1, 2]]
+replace_with(0, 0, matrix, "a")
         
