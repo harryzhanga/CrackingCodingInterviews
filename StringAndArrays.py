@@ -29,3 +29,23 @@ def reverse_C_string_2(string):
         i -= 1
     new_str += "\0"
     return new_str
+
+
+#1.4
+def are_anagrams(str1, str2):
+    #using sorting O(logn)
+    return sorted(str1) == sorted(str2)
+
+def are_anagrams_2(str1, str2):
+    str1_counts = {}
+    for char in str1:
+        str1_counts[char] = str1_counts.get(char, 0) + 1
+    
+    str2_counts = {}
+    for char in str2:
+        str2_counts[char] = str2_counts.get(char, 0) + 1
+    
+    for char in str1 + str2:
+        if char not in str1_counts or char not in str2_counts or str1_counts[char] != str2_counts[char]:
+            return False
+    return True
