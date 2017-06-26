@@ -1,6 +1,6 @@
 #1.1
 def has_unique_char(string):
-    #uses dictionary (more data)
+    #uses dictionary (more data) but O(n)
     char_dict= {}
     for char in string:
         if char in char_dict:
@@ -9,7 +9,7 @@ def has_unique_char(string):
     return True
 
 def has_unique_char_2(string):
-    #without extra data
+    #without extra data but O(nlogn) run time
     string = sorted(list(string))
     #check if any character is the same as the previous
     for i in range(1, len(string)):
@@ -37,6 +37,7 @@ def are_anagrams(str1, str2):
     return sorted(str1) == sorted(str2)
 
 def are_anagrams_2(str1, str2):
+    #O(n) memory but decreases run time to O(n)
     str1_counts = {}
     for char in str1:
         str1_counts[char] = str1_counts.get(char, 0) + 1
