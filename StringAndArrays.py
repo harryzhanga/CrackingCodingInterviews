@@ -50,3 +50,25 @@ def are_anagrams_2(str1, str2):
         if char not in str1_counts or char not in str2_counts or str1_counts[char] != str2_counts[char]:
             return False
     return True
+
+#1.5
+def replace_with(prev, new, string):
+    #using just the pure python string library. Expected O(n)
+    return string.replace(prev, new)
+
+def replace_with_2(prev, new, string):
+    #for now, I will expect that prev is just one character and not many characters
+    #this is O(n)
+    new_str = ""
+    for char in string:
+        if char == prev:
+            new_str += new
+        else:
+            new_str += char
+    return new_str
+
+
+
+
+
+        
