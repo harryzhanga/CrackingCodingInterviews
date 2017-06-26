@@ -16,3 +16,16 @@ def has_unique_char_2(string):
         if string[i] == string[i-1]:
             return False
     return True
+
+#1.2
+def reverse_C_string(string):
+    return string[-1::-1] + "\0"
+
+def reverse_C_string_2(string):
+    new_str = ""
+    i = len(string) - 2
+    while i >= 0:
+        new_str += string[i]
+        i -= 1
+    new_str += "\0"
+    return new_str
