@@ -126,3 +126,26 @@ def replace_with(prev, new, matrix, sentinel):
 #an example of how this funtion could be used
 matrix = [[0, 0, 1], [1, 1, 1], [1, 1, 2]]
 replace_with(0, 0, matrix, "a")
+
+#1.8
+def is_rotation(str1, str2):
+    for i in range(1,len(str1)):
+        if str1[i:] + str1[:i] == str2:
+            return True
+    return False
+
+#1.8
+def is_rotation(str1, str2):
+    #my own naive implementation O(nm)
+    for i in range(1,len(str1)):
+        if str1[i:] + str1[:i] == str2:
+            return True
+    return False
+
+def is_rotation_2(str1, str2):
+    #textbook implementation O(nm) 
+    if len(str1) != len(str2):
+        return False
+    return str2 in str1+str1
+
+
